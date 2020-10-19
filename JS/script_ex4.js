@@ -10,7 +10,8 @@ var gamemode = 0;
 
 function init()
 {
-  let uInput = document.querySelector('.uInput').disabled = true;
+  let uInput = document.querySelector('.uInput');
+  uInput.disabled = true
   let gSubmit = document.querySelector('.gSubmit').disabled = true;
   let gReset = document.querySelector('.gReset').disabled = true;
   console.log(luckyNumber);
