@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Jeu du juste prix</title>
+    <link rel="stylesheet" href="../CSS/style_ex4.css">
+    <script src="../JS/script_ex4.js" charset="utf-8"></script>
+  </head>
+  <body onload="init()">
+    <!-- Jeu du juste prix => Random, timer 0, quand le joueur a saisi une valeur et validé
+    répondre dans une zone de texte si c'est inférieur ou supérieur. Fin de la partie =
+    nombre de coups et chrono s'arrête-->
+
+<center>
+  <div class="JustePrix">
+    <span id="game_title">JEU DU JUSTE PRIX<br>PAR LUCAS - "WEACT"</span><br>
+    <hr>
+    <div class="GameMode">
+      <label for="game-gamemode-beat" class="game_details">TIME BEAT</label><input type="radio" name="game-gamemode" id="game-gamemode-beat" value="1" onclick="set_gamemode()">
+      <label for="game-gamemode-trial" class="game_details">TIME TRIAL</label><input type="radio" name="game-gamemode" id="game-gamemode-trial" value="2" onclick="set_gamemode()">
+    </div>
+    <hr>
+    <span id="gamemode_displayer"></span>
+    <hr>
+    <div class="Timer">
+      <span id='timer-display'></span>
+    </div>
+    <div class="Hits">
+      <span id='user-hits'></span>
+    </div>
+    <div class="Input">
+      <input type="number" class="uInput" name="user-Input" value="" placeholder="Entrez la valeur ici" oninput="game_start()">
+    </div>
+    <div class="System">
+      <span id='system-alert'></span>
+    </div>
+    <div class="Submit">
+      <input type="button" class="gSubmit" name="game-Submit" value="Valider" onclick="submit_answer()">
+    </div>
+    <div class="Reset">
+      <a href=""><input type="reset" class="gReset" name="game-Reset" value="Recommencer"></a>
+    </div>
+  </div>
+</center>
+
+  </body>
+</html>

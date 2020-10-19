@@ -1,0 +1,123 @@
+body{
+  background-color: #00000F;
+}
+
+
+.JustePrix
+{
+  background-color: black;
+  width: 920px;
+  height: fit-content;
+  margin: 50px 50px 50px 50px;
+  padding: 20px 20px 20px 20px;
+  font-family: monospace;
+  border: solid 2px black;
+  color: orange;
+  border: 5px orange groove;
+  text-align: center;
+}
+
+#game_title
+{
+  font-size: 64px;
+  color: orange;
+  font-weight: bolder;
+  font-family: monospace;
+  text-align: center;
+}
+
+#gamemode_displayer
+{
+  font-size: 28px;
+  color: orange;
+  font-weight: bolder;
+  font-family: monospace;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+
+.game_details
+{
+  font-size: 28px;
+  color: orange;
+  font-weight: bolder;
+  font-family: monospace;
+  text-align: center;
+  margin: 0 50px 0 50px;
+}
+
+hr{
+  border: 2px orange solid;
+  padding: 1px;
+  margin: 10px 10px 10px 10px;
+}
+
+.Timer{
+  font-size: 48px;
+  color: orange;
+  font-weight: bolder;
+  font-family: monospace;
+  text-align: center;
+}
+
+.uInput{
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  text-align: center;
+  margin: 50px 0 50px 0;
+  font-family: monospace;
+  width: 500px;
+  padding: 20px;
+}
+
+.uInput:disabled{
+  background-color: #0F0F0F;
+  border-color: red;
+}
+
+.gSubmit{
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  font-family: monospace;
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+.gSubmit:disabled{
+  background-color: #0F0F0F;
+  border-color: red;
+}
+
+.gReset{
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  font-family: monospace;
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+.gReset:disabled{
+  background-color: #0F0F0F;
+  border-color: red;
+}
+
+#user-hits{
+  font-size: 48px;
+  color: orange;
+  font-weight: bolder;
+  font-family: monospace;
+  text-align: center;
+}
+
+#system-alert{
+  font-weight: bold;
+  font-size: 24px;
+  font-family: monospace;
+}
