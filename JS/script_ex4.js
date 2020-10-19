@@ -78,6 +78,7 @@ function decrease_timer()
     is_game_running = false;
     let userhitsDisplayer = document.querySelector('#user-hits').innerHTML = userhits + " COUPS";
     let systemText = document.querySelector('#system-alert').innerHTML = "DOMMAGE<br>PARTIE TERMINEE :<br>5 secondes et "+userhits+" coups.";
+    let uInput = document.querySelector('.uInput').disabled = true;
     clearTimeout(timer);
   }
 }
@@ -106,9 +107,11 @@ function submit_answer()
         let userhitsDisplayer = document.querySelector('#user-hits').innerHTML = userhits + " COUPS";
         if(gamemode == 1){
           let systemText = document.querySelector('#system-alert').innerHTML = "BRAVO<br>Vous avez fini en :<br>" +timerValue+" secondes et "+userhits+" coups.";
+          let uInput = document.querySelector('.uInput').disabled = true;
         }
         if(gamemode == 2){
           let systemText = document.querySelector('#system-alert').innerHTML = "BRAVO<br>Vous avez fini avec :<br>"+timerValue+" secondes restantes et "+userhits+" coups.";
+          let uInput = document.querySelector('.uInput').disabled = true;
         }
 
         clearTimeout(timer);
