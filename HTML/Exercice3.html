@@ -1,0 +1,61 @@
+<!--changer la couleur d'un élément sur un événement-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Table using DIVs</title>
+    <link rel="stylesheet" href="../CSS/style_ex3.css">
+  </head>
+  <body onload="init()">
+
+    <h1 id="divtable">- DIV Table -</h1>
+    <span id="magic-span">Un text changeant de color au survol</span><br>
+    <div id="mContenu1"></div>
+    <div id="mContenu2"></div>
+
+    <div id="Contenu1">
+      ABCDEFGHIJKLMNOPQRSTUVWXYZ
+    </div>
+    <div id="Contenu2">
+      123456789
+    </div>
+
+    <script type="text/javascript">
+    function init()
+    {
+      var contenus = document.querySelectorAll("div[id]");
+      console.log(contenus);
+
+      for (var i = 0; i < contenus.length; i++) {
+        if(i < 2){
+          contenus[i].addEventListener("mouseover",Afficher);
+        }
+      }
+      contenus[2].style.visibility = 'hidden';
+      contenus[3].style.visibility = 'hidden';
+    }
+
+    function Afficher(event)
+    {
+      if (this.id == 'mContenu1'){
+        document.getElementById('Contenu1').style.visibility = 'visible';
+        document.getElementById('Contenu2').style.visibility = 'hidden';
+      }else if (this.id == 'mContenu2') {
+        document.getElementById('Contenu2').style.visibility = 'visible';
+        document.getElementById('Contenu1').style.visibility = 'hidden';
+      }
+    }
+
+    var e = document.getElementById('magic-span');
+    e.addEventListener("mouseover",function(event){
+      event.target.style.color = "red";
+
+      setTimeout(function(){
+        event.target.style.color = "";
+      }, 2000)
+    })
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,77 @@
+/********************************************************************
+*           CSS BY DRUCKES LUCAS
+*           TABLE USING DIVS
+*           19.10.2020
+*           https://github.com/Weact
+*********************************************************************/
+
+.div-table
+{
+  display: table;
+  padding: 10px;
+  width: fit-content;
+  font-size: 20px;
+  margin: 20px 20px 20px 20px;
+}
+
+.div-table-title
+{
+  display: table-caption;
+  background-color: #585858;
+  padding: 10px;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: black;
+}
+
+.div-table-row:first-child
+{
+  color: black;
+  float: left;
+  padding: 25px 50px 25px 50px;
+  border: black solid 2px;
+  margin: 2px 2px 2px 2px;
+}
+.div-table-row:nth-child(2)
+{
+  color: black;
+  float: left;
+  padding: 25px 50px 25px 50px;
+  border: black solid 2px;
+  margin: 2px 2px 2px 2px;
+}
+
+.div-table-col
+{
+
+  color: black;
+  margin: 5px 15px 5px 15px;
+}
+
+/* EVENTS */
+/*
+.div-table:hover
+{
+  background-color: #CDCDCD;
+}
+.div-table-row:hover
+{
+  background-color:magenta;
+  color: orange;
+  transition: 1s;
+}
+.div-table-col:hover
+{
+  background-color: black;
+  color: orange;
+  transition: 1s;
+}
+#magic-span:active
+{
+  color: orange;
+  font-size: 20px;
+  background-color: black;
+  transition: 0.1s;
+  font-weight: bolder;
+}
+*/

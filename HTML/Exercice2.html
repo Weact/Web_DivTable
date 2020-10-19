@@ -1,0 +1,103 @@
+<!--changer la couleur d'un élément sur un événement-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Table using DIVs</title>
+    <link rel="stylesheet" href="../CSS/style_ex2.css">
+  </head>
+  <body>
+
+    <h1 id="divtable">- DIV Table -</h1>
+    <span id="magic-span">Un text changeant de color au survol</span><br>
+    <input type="button" name="" value="Generate Table" onclick="generateTab();">
+    <input type="button" name="" value="Hide Genders" onclick="hide_genders();">
+
+    <script type="text/javascript">
+
+    var e = document.getElementById('magic-span');
+    e.addEventListener("mouseover",function(event){
+      event.target.style.color = "red";
+
+      setTimeout(function(){
+        event.target.style.color = "";
+      }, 2000)
+    })
+
+    function generateTab() {
+      var jeux = ['JEUX','World of Warcraft','Diablo 3','League of Legends','Overwatch']
+      var genre = ['GENRE','MMORPG','Hack\'n\'Slash','MOBA','FPS']
+
+      console.log(jeux);
+      console.log(genre);
+
+      var body = document.getElementsByTagName('body')[0];
+
+      var myTab = document.createElement("div");
+      var myTabBody = document.createElement("div");
+      document.body.appendChild(myTab);
+
+      for (var i = 1; i < 2; i++) {
+          var row = document.createElement("div");
+          row.setAttribute('class','div-table-row');
+          var trowText = document.createTextNode(jeux[0]);
+          row.appendChild(trowText);
+
+          for (var j = 1; j < jeux.length; j++) {
+            var tcol = document.createElement('div');
+            tcol.setAttribute('class','div-table-col');
+            var tcolText = document.createTextNode(jeux[j]);
+            tcol.appendChild(tcolText);
+            row.appendChild(tcol);
+          }
+          myTabBody.appendChild(row);
+      }
+      myTab.appendChild(myTabBody);
+      body.appendChild(myTab);
+
+      for (var i = 1; i < 2; i++) {
+          var row = document.createElement("div");
+          row.setAttribute('class','div-table-row div-genre');
+          var trowText = document.createTextNode(genre[0]);
+          row.appendChild(trowText);
+
+          for (var j = 1; j < jeux.length; j++) {
+            var tcol = document.createElement('div');
+            tcol.setAttribute('class','div-table-col div-genre');
+            var tcolText = document.createTextNode(genre[j]);
+            tcol.appendChild(tcolText);
+            row.appendChild(tcol);
+          }
+          myTabBody.appendChild(row);
+      }
+
+      myTab.appendChild(myTabBody);
+      body.appendChild(myTab);
+      myTab.setAttribute('class','div-table');
+      console.log(typeof(myTab));
+      console.log(typeof(jeux));
+      console.log(typeof(genre));
+    }
+
+    function hide_genders(){
+      var genres = document.getElementsByClassName('div-genre');
+      console.log(genres);
+      for (var i = 0; i < genres.length; i++) {
+        /*
+        if (genres[i].style.visibility == 'hidden')
+        {
+          genres[i].style.visibility = 'visible';
+        }
+        else
+        {
+          genres[i].style.visibility = 'hidden';
+        }
+        */
+        genres[i].style.visibility =='visible' ? genres[i].style.visibility ='hidden' : genres[i].style.visibility ='visible';
+      }
+    }
+
+    </script>
+
+  </body>
+</html>
