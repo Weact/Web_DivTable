@@ -2,6 +2,7 @@ const MAX = 99;
 var luckyNumber = Math.floor(Math.random() * Math.floor(MAX));;
 var timer;
 //var timerValue = 0;
+var timerDecReference;
 var timerValue;
 var userhits = 0;
 var is_game_running = false;
@@ -53,6 +54,7 @@ function game_start()
     }
     if(gamemode == 2){
       timerValue = 15;
+      timerDecReference = timerValue;
       timer = setInterval(decrease_timer, 1000);
       let gSubmit = document.querySelector('.gSubmit').disabled = false;
     }
@@ -66,6 +68,7 @@ function increase_timer()
   let timer = document.querySelector('#timer-display');
   timer.innerHTML = ''+timerValue+'.0s';
 }
+
 function decrease_timer()
 {
   if(timerValue > 0){
@@ -78,7 +81,7 @@ function decrease_timer()
     is_game_finished = true;
     is_game_running = false;
     let userhitsDisplayer = document.querySelector('#user-hits').innerHTML = userhits + " COUPS";
-    let systemText = document.querySelector('#system-alert').innerHTML = "DOMMAGE<br>PARTIE TERMINEE :<br>5 secondes et "+userhits+" coups.";
+    let systemText = document.querySelector('#system-alert').innerHTML = "DOMMAGE<br>PARTIE TERMINEE :<br>"+timerDecReference+" secondes et "+userhits+" coups.";
     let uInput = document.querySelector('.uInput').disabled = true;
     clearTimeout(timer);
   }

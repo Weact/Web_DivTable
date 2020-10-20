@@ -1,0 +1,81 @@
+/********************************************************************
+*           CSS BY DRUCKES LUCAS
+*           TABLE USING DIVS
+*           19.10.2020
+*           https://github.com/Weact
+*********************************************************************/
+
+body
+{
+  background-color: black;
+}
+
+.div-table
+{
+  display: table;
+  width: fit-content;
+  font-size: 20px;
+  font-family: monospace;
+  margin: 20px 20px 20px 20px;
+  color: orange;
+  text-align: center;
+}
+
+.div-table-body
+{
+  background-color: black;
+  padding: 20px;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: orange;
+  border: 3px solid orange;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.div-table-row{
+  margin: 10px 0 10px 0;
+  border: 1px solid orange;
+  border-radius: 100px;
+  padding: 15px;
+  transition: 1s;
+  text-align: center;
+}
+.div-table-row:hover{
+  border: 2px solid magenta;
+  transition: 0.5s;
+  background-color: #3F3F3F;
+  text-align: left;
+}
+
+.bGenerate{
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  font-family: monospace;
+  margin: 20px 0 20px 0;
+  text-align: center;
+}
+
+.pageSelect{
+  width: fit-content;
+  background-color: black;
+  border: 2px solid orange;
+  color: orange;
+  font-family:monospace;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  outline: none;
+}
+.selectOptions{
+  font-family: monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: orange;
+  text-align: center;
+}
