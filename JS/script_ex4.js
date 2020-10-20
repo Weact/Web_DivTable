@@ -68,6 +68,7 @@ function increase_timer()
   let timer = document.querySelector('#timer-display');
   timer.innerHTML = ''+timerValue+'.0s';
 }
+
 function decrease_timer()
 {
   if(timerValue > 0){
