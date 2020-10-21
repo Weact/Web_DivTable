@@ -1,0 +1,119 @@
+<!-- DOM
+*Renseigner le title dans le js fonction init
+* html = root / head et body sont des siblings, enfan de html.
+* title est enfant de head ; il contient un noeud : 'text'
+*
+* frère de head > body
+* h1 enfant de body, contient un noeud 'text'
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="../CSS/dom.css">
+    <script src="../JS/script_dom.js" charset="utf-8"></script>
+  </head>
+  <body onload="init()">
+<h2> Document Object Model</h2>
+<div id="cadre" class="" style="border: 5px solid orange;">
+  <p id="par1" class="test">Paragraphe Contenu Dans Le Cadre</p>
+  <input type="button" id="btn1" class="btn" name="" value="Epaissir Le Cadre" onclick="grossir()"> <!-- AVEC FONCTION -->
+  <input type="button" id="btn2" class="btn" name="" value="Epaissir Le Cadre"> <!-- AVEC EVENT .ONCLICK-->
+  <input type="button" id="btn3" class="btn" name="" value="Epaissir Le Cadre"> <!-- AVEC EVENTLISTENER -->
+
+  <script type="text/javascript">
+    var contour_epaisseur = 5;
+    var coeff = 2;
+    var contour = document.querySelector('#cadre');
+    console.log(contour);
+    console.log(typeof(contour));
+
+    /* On Récupère un objet, une NodeList (tableau) qui renseigne tous nos paragraphes, avec l'id et la classe */
+    //var par = document.querySelectorAll('#cadre > p');
+
+    var par = document.getElementsByTagName('p');
+
+    console.log(par);
+    console.log(typeof(par));
+    console.log(Array.isArray(par));
+    console.table(par);
+    console.log(par[par.length-1]); // Affiche le dernier item du 'tableau'
+
+    var x = document.querySelectorAll('p.test');
+    console.log(x);
+    // => On récupère une NodeList
+
+    var w = document.querySelectorAll('p#par1');
+    console.log(w);
+    // => On récupère une NodeList
+
+    //console.log(x.innerHTML); //return undefined => Car c'est un noeud. On doit se positionner dans le noeud
+    console.log(x[x.length-1].innerHTML); //Affiche le contenu du dernier élément du tableau
+
+
+    function grossir(){
+      contour.style.borderWidth = contour_epaisseur+'px';
+      contour_epaisseur *= coeff;
+    }
+
+
+    var b2 = document.getElementById('btn2').onclick = function(){
+      contour.style.borderWidth = contour_epaisseur+'px';
+      contour_epaisseur *= coeff;
+    }
+
+    var b3 = document.getElementById('btn3').addEventListener("click",function(){
+      contour.style.borderWidth =  contour_epaisseur+'px';
+      contour_epaisseur *= coeff;
+    });
+
+
+  </script>
+
+</div>
+  </body>
+</html>
+
+<!-- COURS
+
+- HTML
+
+- - Attendu qu'un noeud peut contenir des noeuds, le texte contenu par un noeud est une noeud texte..
+<title id="demo"> DOM TUTORIAL </title>
+
+- JS
+- - SCRIPT.JS OU <SCRIPT></SCRIPT> DANS LE HTML
+
+- - On y accède avec la propriété innerHTM
+var myTitle = document.getElementById("demo").innerHTML
+
+- - On y accède avec la propriété nodeValue du 1er enfant du noeud
+var myTitle  document.getElementById("demo").firstChild.nodeValue;
+
+- - Equivalent de:
+var myTitle = document.getElementById("demo").childNodes[0].nodeValue;
+
+- !! A TESTER !!
+
+*****************************************************************************************************
+
+- JS
+- - Pour ajouter un élément au DOM, il faut d'abord le créer, puis l'ajouter à son parent
+- - Ne pas oublier que le texte est un textNode.
+
+- - Supprimer avec remove() ou removeCHILD5°;
+
+- - Très pratique :
+
+var child = document.getElementById("p1");
+child.parentNode.removeChild(child);
+
+- - Remplacer un élément par un autre avec :
+
+parent.replaceChild(para, child);
+
+- - voir le damier en DOM
+```
+-->

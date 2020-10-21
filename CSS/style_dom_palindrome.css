@@ -1,0 +1,60 @@
+body{
+  background-color: black;
+  color: orange;
+  font-family: monospace;
+  font-size: 20px;
+  text-align: center;
+}
+
+/********************************************************************
+*           CSS BY DRUCKES LUCAS
+*           EXERCISE PALYNDROME
+*           21.10.2020
+*           https://github.com/Weact
+*********************************************************************/
+
+.container{
+  margin: 0 auto;
+  width: fit-content;
+  border: white 3px solid;
+  padding: 20px;
+  margin-bottom: 50px;
+  border-radius: 5px;
+}
+
+.btn{
+  /*margin: auto auto;*/
+  display: block;
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  font-family: monospace;
+  text-align: center;
+  padding: 10px;
+  width: fit-content;
+  margin: auto auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#btnPalindrome{
+  width: 500px;
+}
+
+#iSystemMsg{
+  font-size: 48px;
+}
+
+#divcont:hover{
+    background-color: #4F4F4F;
+}
+
+hr{
+  border: 3px white solid;
+  border-radius: 50px;
+  padding: 1px;
+  margin: 10px 10px 10px 10px;
+  background-color: orange;
+}

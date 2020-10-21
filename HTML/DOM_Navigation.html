@@ -1,0 +1,17 @@
+<html>
+<head name="HEAD">
+  <title>DOM - Navigation</title>
+  <meta charset='utf-8' lang='en'>
+  <link rel="stylesheet" href="../CSS/dom_navigation.css">
+  <script src="../JS/script_dom_navigation.js" charset="utf-8"></script>
+</head>
+<body onload='init()'>
+  <h2> Document Object Model - Navigation</h2>
+  <h3> Cliquez sur le conteneur (div) pour ajouter des textes</h3>
+  <input type="button" id='btn_fnode' class='btn' onclick='fNode()' value="FNODE">
+  <div id='div1' class="container" onclick='addPara()'>
+    <p id='p1'>Paragraphe 1</p> <!-- 'Poser' des éléments dans le document, à la main. Pas au DOM -->
+    <p id='p2'>Paragraphe 2</p> <!-- 'Poser' des éléments dans le document, à la main. Pas au DOM -->
+  </div>
+</body>
+</html>
