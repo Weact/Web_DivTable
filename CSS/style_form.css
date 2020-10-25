@@ -160,12 +160,16 @@ ul
   margin-top: 20px;
   margin-bottom: 20px;
 	cursor: pointer;
+	outline: none;
 }
 .btn:hover{
 	color: gold;
 	border-radius: 10px;
 	background-color: #2F2F2F;
 	outline: none;
+}
+.btn:active{
+	border-color: green;
 }
 
 .submit
@@ -201,6 +205,34 @@ ul
 	cursor: default;
 }
 
+.displayedImage{
+	width: 256px;
+	height: 144px;
+}
+
+.hobbyImageContainer{
+	width: 960px;
+}
+
+.spanUserInfo{
+	display: block;
+	width: fit-content;
+	margin: 10px auto 10px auto;
+}
+.spanUserInfo:hover{
+	color: lightgrey;
+	text-decoration: underline;
+	cursor: crosshair;
+}
+
+
+.infosContainer{
+	width: fit-content;
+	word-break: break-all;
+	text-align: center;
+	vertical-align: middle;
+}
+
 .textInput{
 	background-color: #3F3F3F;
 	color: orange;
@@ -218,21 +250,25 @@ ul
 	background-color: #5F5F5F;
 }
 
-#fieldsetCivilite{
-
+.fieldsetCat{
 	border: 3px white dashed;
 	border-radius: 20px;
 	padding: 10px;
 	width: fit-content;
 	margin: 20px auto 20px auto;
-
 }
 
-.fieldsetCivilite legend{
+.fieldsetLegend{
 	color: white;
 	font-size: 1.5em;
 	text-decoration: underline;
 	font-weight: bolder;
+}
+
+#fieldsetCivilite{
+}
+
+.fieldsetCivilite legend{
 }
 
 .dateInput{
@@ -279,7 +315,7 @@ ul
 	color: white;
 }
 
-.hobbySelector{
+.formSelector{
 	overflow: hidden;
 	width: 300px;
 	height: 209px;

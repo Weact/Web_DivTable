@@ -5,7 +5,6 @@ const min_size = 130;
 const max_size = 250;
 const min_weight = 20;
 const max_weight = 300;
-const u_pass = "ludus";
 const const_array = [min_age, max_age, min_size, max_size, min_weight, max_weight, u_pass];
 
 
@@ -236,11 +235,6 @@ function check_checkbox(class_name)
       checkboxesChecked.push(checkboxes[i]);
     }
   }
-  /*for(var j = 0; j<checkboxesChecked.length; j++)
-  {
-    console.log(checkboxesChecked[j].value);
-  }*/
-
   return checkboxesChecked;
 }
 
