@@ -1,4 +1,4 @@
-function init(){
+function initAPI(){
   console.log('Weact Creation API loaded successfully');
 }
 

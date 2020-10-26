@@ -223,6 +223,10 @@ function createInput(itype, iname, iid, iclass, ivalue, min, max, iplaceholder, 
     if(itype == 'range'){
       newInput.setAttribute('min',min);
       newInput.setAttribute('max',max);
+    }else{
+      if(itype == 'email'){
+        newInput.setAttribute('pattern','[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$');
+      }
     }
   }
   if(interaction != ''){newInput.setAttribute(''+interaction+'',action);}

@@ -286,6 +286,13 @@ ul
 	outline: #5F5F5F;
 }
 
+input:valid{
+	background-color: rgba(0,255,0,0.4);
+}
+input:invalid{
+	background-color: rgba(255,0,0,0.4);
+}
+
 .clDateDisplayer{
 	background-color: #5F5F5F;
 	color: orange;
