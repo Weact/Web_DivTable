@@ -67,6 +67,14 @@ body{
   border: 2px solid orange;
 }
 
+hr{
+  border: 3px white solid;
+  border-radius: 50px;
+  padding: 1px;
+  margin: 10px 10px 10px 10px;
+  background-color: orange;
+}
+
 .selectOptions{
   padding: 20px;
   font-family: monospace;

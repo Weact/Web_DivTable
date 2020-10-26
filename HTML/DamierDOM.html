@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>DAMIER DOM</title>
+    <link rel="stylesheet" href="../CSS/damierdom.css">
+    <script src="../JS/weact_createElements_API.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      createDateToday('dateContainer container', 'dateContainer', 'clDateDisplayer', 'clDateDisplayer', document.body);
+      let damierContainer = createContainer('damierContainer', 'damierContainer', 'damierContainer container', document.body, '');
+      let damierWidth = createInput('range', 'damierWidthSlider', 'damierWidthSlider', 'damierWidthSlider', 0, 0, 19, '', '', '', damierContainer, '');
+      let damierHeight = createInput('range', 'damierHeightSlider', 'damierHeightSlider', 'damierHeightSlider', 0, 0, 19, '', '', '', damierContainer, '');
+      let damierOddCellColor = createInput('color', 'damierOddCellColor', 'damierOddCellColor', 'damierOddCellColor colorInput', '#FFFFFF', '', '', '', '', '', damierContainer, '');
+      let damierEvenCellColor = createInput('color', 'damierEvenCellColor', 'damierEvenCellColor', 'damierEvenCellColor colorInput', '#000000', '', '', '', '', '', damierContainer, '');
+      let generateDamierInput = createInput('button', 'generateDamierBtn', 'generateDamierBtn', 'generateDamierBtn btn', 'Generate', '', '', '', 'onclick', 'generateDamier(damierWidth.value, damierHeight.value, damierOddCellColor.value, damierEvenCellColor.value);', damierContainer, '');
+
+      function generateDamier(width, height, oddcolor, evencolor){
+        if(width == 0){width = 1;}
+        if(height == 0){height = 1;}
+        let table = document.createElement("table");
+            table.setAttribute('id','damier');
+            table.setAttribute('class','damier');
+            for (i=0;i< width;i++) { // row
+              let tr = document.createElement("tr");
+              for (j=0;j< height;j++) { // cells
+                  let td = document.createElement("td");
+                  if ((i+j) %2 != 0) { // even cells
+                      td.setAttribute('style','background-color:'+evencolor+'');
+                  }else{
+                    td.setAttribute('style','background-color:'+oddcolor+'');
+                  }
+                  tr.appendChild(td);
+              }
+              table.appendChild(tr);
+            }
+            damierContainer.appendChild(table);
+        }
+
+    </script>
+  </body>
+</html>

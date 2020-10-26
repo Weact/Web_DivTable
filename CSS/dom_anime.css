@@ -1,0 +1,109 @@
+body{
+  background-color: black;
+  color: orange;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+/********************************************************************
+*           CSS BY DRUCKES LUCAS
+*           EXERCISE DOM ANIMATION
+*           21.10.2020
+*           https://github.com/Weact
+*********************************************************************/
+
+body{
+  background-color: black;
+  color: orange;
+  font-family: monospace;
+  font-size: 20px;
+}
+
+#gameContainer{
+  background-color: black;
+  width: 500px;
+  height: 500px;
+  position: relative;
+  border: 1px solid white;
+  margin: auto auto;
+}
+
+.player{
+  background-color: blue;
+}
+
+.obstacles{
+  background-color: red;
+}
+
+.gameObjects{
+  position: absolute;
+}
+
+#movebutton{
+  /*margin: auto auto;*/
+  display: block;
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  font-family: monospace;
+  text-align: center;
+  padding: 20px;
+  width: fit-content;
+  margin: 20px auto;
+  border-radius: 100px;
+  outline: none;
+}
+#movebutton:hover{
+  background-color: #3F3F3F;
+}
+
+.slider_spdChanger{
+  position: absolute;
+  margin: auto 700px;
+  width: 500px;
+}
+
+
+.test{
+  color: orange;
+}
+
+.btn{
+  /*margin: auto auto;*/
+  display: block;
+  background-color: black;
+  color: orange;
+  font-weight: bold;
+  font-size: 24px;
+  border: 3px solid white;
+  font-family: monospace;
+  text-align: center;
+  padding: 10px;
+  width: fit-content;
+  margin: auto auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  outline: none;
+  transition: 0.5s;
+}
+
+.btn:hover{
+  background-color: #6F6F6F;
+  transition: 0.5s;
+}
+
+h2{
+  margin: auto auto;
+  width: fit-content;
+}
+
+hr{
+  border: 3px white solid;
+  border-radius: 50px;
+  padding: 1px;
+  margin: 10px 10px 10px 10px;
+  background-color: orange;
+}
