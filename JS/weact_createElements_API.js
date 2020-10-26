@@ -77,7 +77,7 @@ function createLink(lname, lid, lclass, lhref, ltextnode, ltargetParent){
 }
 
 //TYPE NAME ID CLASS VALUE MINLENGTH MAXLENGTH PLACEHOLDER INTERACTION(event: onclick, onfocusout, [...]) ACTION(votre fonction) PARENTNODE
-function createInput(itype, iname, iid, iclass, ivalue, min, max, iplaceholder, interaction, action, itargetParent, isrequired){
+function createInput(itype, iname, iid, iclass, ivalue, min, max, iplaceholder, interaction, action, itargetParent, isrequired, step = 1){
   var newInput = document.createElement('input');
   newInput.setAttribute('type',itype);
   newInput.setAttribute('name',iname);
@@ -92,6 +92,7 @@ function createInput(itype, iname, iid, iclass, ivalue, min, max, iplaceholder, 
     if(itype == 'range'){
       newInput.setAttribute('min',min);
       newInput.setAttribute('max',max);
+      newInput.setAttribute('step',step);
     }
   }
   if(interaction != ''){newInput.setAttribute(''+interaction+'',action);}

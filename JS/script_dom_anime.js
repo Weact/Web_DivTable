@@ -1,6 +1,15 @@
 var timer;
 var speed = 10;
-let obstaclesArray = [];
+var obstaclesArray = [];
+var inter;
+var inputs = [false, false, false, false];
+var players = [{x:0,y:0,w:40,h:40}];
+var obstacles = [
+                  {x: 100, y: 100, w: 40, h: 40},
+                  {x: 200, y: 200, w: 40, h: 40},
+                  {x: 350, y: 350, w: 40, h: 40}
+    ]
+
 
 function init(){
 
@@ -8,12 +17,12 @@ function init(){
 
 	var body = document.body;
   var gameContainer = createContainer('gameContainer', 'gameContainer', 'gameContainer', body, 'width: 500px; height: 500px;');
-  var gameObject1 = createContainer('gameObject1', 'gameObject1', 'gameObject1 player gameObjects', gameContainer, 'width: 40px; height: 40px; top: 0px; left: 0px;');
+  var gameObject1 = createContainer('player1', 'player1', 'player gameObjects', gameContainer, 'width: '+players[0].w+'px; height: '+players[0].h+'px; top: '+players[0].x+'px; left: '+players[0].y+'px;');
   gameObject1.setAttribute('onclick','startMoving(this)');
 
-  var gameObject2 = createContainer('gameObject2', 'gameObject2', 'gameObject2 obstacles gameObjects', gameContainer, 'width: 40px; height: 40px; top: 100px; left: 100px;');
-  var gameObject3 = createContainer('gameObject3', 'gameObject3', 'gameObject3 obstacles gameObjects', gameContainer, 'width: 40px; height: 40px; top: 200px; left: 200px;');
-  var gameObject4 = createContainer('gameObject4', 'gameObject4', 'gameObject4 obstacles gameObjects', gameContainer, 'width: 40px; height: 40px; top: 350px; left: 310px;');
+  var gameObject2 = createContainer('gameObject2', 'gameObject2', 'gameObject2 obstacles gameObjects', gameContainer, 'width: '+obstacles[0].w+'px; height: '+obstacles[0].h+'px; top: '+obstacles[0].x+'px; left: '+obstacles[0].y+'px;');
+  var gameObject3 = createContainer('gameObject3', 'gameObject3', 'gameObject3 obstacles gameObjects', gameContainer, 'width: '+obstacles[1].w+'px; height: '+obstacles[1].h+'px; top: '+obstacles[1].x+'px; left: '+obstacles[1].y+'px;');
+  var gameObject4 = createContainer('gameObject4', 'gameObject4', 'gameObject4 obstacles gameObjects', gameContainer, 'width: '+obstacles[2].w+'px; height: '+obstacles[2].h+'px; top: '+obstacles[2].x+'px; left: '+obstacles[2].y+'px;');
 
   obstaclesArray = document.querySelectorAll('.obstacles');
   console.log(obstaclesArray);
@@ -21,84 +30,16 @@ function init(){
   var parent_static_square = document.querySelector('#gameContainer');
 	var child_movable_square = document.querySelector('#gameObject1');
 
-	var btn = document.createElement('input');
-	btn.setAttribute('type','button');
-	btn.setAttribute('id','movebutton');
-	btn.setAttribute('value','Bouger le carre');
-
-	body.appendChild(btn);
-
-	var spdSlider = document.createElement('input');
-	spdSlider.setAttribute('type','range');
-	spdSlider.setAttribute('min','0');
-	spdSlider.setAttribute('max','20');
-	spdSlider.setAttribute('step','10');
-	spdSlider.setAttribute('value',''+speed+'');
-	spdSlider.setAttribute('id','speedChanger');
-	spdSlider.setAttribute('class','slider_spdChanger');
-
-	body.appendChild(spdSlider);
-
-	spdSlider.onchange = function(){
-		console.log(speed);
-		speed = parseInt(spdSlider.value);
-		console.log(speed);
-	};
-
-	//var b = document.querySelector('#movebutton').addEventListener('click',startMoving(child_movable_square))
-
-/*
-	window.addEventListener("keydown",function(e){
-		if(e.keyCode == 81){
-			if(child_movable_square.offsetLeft > 0){
-				console.log('Moved Left');
-        for (var i = 0; i < speed; i++) {
-          child_movable_square.style.left = (child_movable_square.offsetLeft - 1) + 'px';
-        }
-			}
-		}
-		if(e.keyCode == 68){
-			if(child_movable_square.offsetLeft <= parent_static_square.offsetWidth - child_movable_square.offsetWidth - parseInt(speed)+1){
-				console.log('Moved Right');
-        for (var i = 0; i < speed; i++) {
-          child_movable_square.style.left = (child_movable_square.offsetLeft + 1) + 'px';
-        }
-
-			}
-		}
-		if(e.keyCode == 90){
-			if(child_movable_square.offsetTop > 1 + speed/2){
-				console.log('Moved Top');
-        for (var i = 0; i < speed; i++) {
-          child_movable_square.style.top = (child_movable_square.offsetTop - 1) + 'px';
-        }
-
-			}
-		}
-		if(e.keyCode == 83){
-			if(child_movable_square.offsetTop <= parent_static_square.offsetHeight - child_movable_square.offsetHeight - parseInt(speed)+1){
-				console.log('Moved Bottom');
-        for (var i = 0; i < speed; i++) {
-          child_movable_square.style.top = (child_movable_square.offsetTop + 1) + 'px';
-        }
-			}
-		}
-	})
-}
-*/
-
+  var btn = createInput('button','movebutton','movebutton', 'movebutton btn', 'Mouvement Player', '', '', '', 'onclick','move()', body);
+  var spdSlider = createInput('range', 'speedChanger', 'speedChanger', 'slider_spdChanger', speed, 0, 20, '', 'onchange', 'speed = parseInt(this.value)', body, '', 10);
 }
 
-let inter;
-let inputs = [false, false, false, false];
-
-function startMoving(o)
-   {
+function startMoving(o){
        document.addEventListener("keypress", moveByArrows);
        document.addEventListener("keyup", moveByArrows);
        //console.log(obstaclesArray);
        if(!inter)
-           inter = setInterval(function(){myMove(o, obstaclesArray)}, 30);
+           inter = setInterval(function(){myMove(o)}, 30);
        else
        {
            clearInterval(inter);
@@ -106,37 +47,51 @@ function startMoving(o)
        }
    }
 
+function myMove(o){
+  if(inputs[0])
+  {
+    if(parseInt(o.style.left) < (parseInt(o.parentNode.style.width) - parseInt(o.style.width))){
+      horizontalMove(players[0], o, speed);
+    }else{
+      horizontalMove(players[0], o, -speed);
+    }
+  }
+  if(inputs[1])
+  {
+    if(parseInt(o.style.top) < (parseInt(o.parentNode.style.height) - parseInt(o.style.height))){
+      verticalMove(players[0], o, speed);
+    }else{
+      verticalMove(players[0], o, -speed);
+    }
+  }
+  if(inputs[2])
+  {
+    if(parseInt(o.style.top) > 0){
+      verticalMove(players[0], o, -speed);
+    }else{
+      verticalMove(players[0], o, +speed);
+    }
+  }
+  if(inputs[3])
+  {
+    if(parseInt(o.style.left) > 0){
+      horizontalMove(players[0], o, -speed);
+    }else{
+      horizontalMove(players[0], o, speed);
+    }
+  }
+  for (var i = 0; i < obstacles.length; i++) {
+    if(collision(players[0], obstacles[i])){
+      if(inputs[0]){horizontalMove(players[0], o, -speed);}
+      if(inputs[1]){verticalMove(players[0], o, -speed);}
+      if(inputs[2]){verticalMove(players[0], o, speed);}
+      if(inputs[3]){horizontalMove(players[0], o, speed);}
+    }
+  }
+  renderObject(players[0], o);
+}
 
-   function myMove(o, obstacles)
-   {
-      //console.log(o.parentNode);
-      //console.log(o.parentNode.left);
-      //console.log(o.parentNode.top);
-      //console.log(o.parentNode.offsetLeft);
-      //console.log(o.parentNode.offsetTop);
-      //console.log(o.parentNode.offsetWidth);
-      //console.log(o.parentNode.offsetHeight);
-
-       if(inputs[0] && parseInt(o.style.left) < (parseInt(o.parentNode.style.width) - parseInt(o.style.width)))
-       {
-          o.style.left = (parseInt(o.style.left) + speed) + "px";
-       }
-       if(inputs[1] && parseInt(o.style.top) < (parseInt(o.parentNode.style.height) - parseInt(o.style.height)))
-       {
-          o.style.top = (parseInt(o.style.top) + speed) + "px";
-       }
-       if(inputs[2] && parseInt(o.style.top) > 0)
-       {
-          o.style.top = (parseInt(o.style.top) - speed) + "px";
-       }
-       if(inputs[3] && parseInt(o.style.left) > 0)
-       {
-          o.style.left = (parseInt(o.style.left) - speed) + "px";
-       }
-   }
-
-   function moveByArrows()
-    {
+function moveByArrows(){
         if(event.type == "keypress")
         {
             if(event.key == 'd')
@@ -184,12 +139,12 @@ function startMoving(o)
     }
 
 function move(){
-    var parent_static_square = document.querySelector('#mydiv');
-    var child_movable_square = document.querySelector('#movable');
+    var parent_static_square = document.querySelector('#gameContainer');
+    var child_movable_square = document.querySelector('#player1');
     if(child_movable_square.offsetLeft <= parent_static_square.offsetWidth-child_movable_square.offsetWidth-1){
       if(child_movable_square.offsetTop <= parent_static_square.offsetHeight-child_movable_square.offsetHeight-1){
-            child_movable_square.style.left = (child_movable_square.offsetLeft + 1) +'px';
-                child_movable_square.style.top = (child_movable_square.offsetTop + 1) +'px';
+            child_movable_square.style.left = (child_movable_square.offsetLeft + speed) +'px';
+                child_movable_square.style.top = (child_movable_square.offsetTop + speed) +'px';
       }else{
           clearInterval(timer);
        }
@@ -197,4 +152,32 @@ function move(){
       clearInterval(timer);
     }
 		console.log('MOVE IS RUNNING');
+}
+
+function collision(playerInfos, obstacleInfo){
+  //let side = "none";
+  let is_colliding = false;
+
+  if( (playerInfos.x + playerInfos.w >= obstacleInfo.x) &&
+  (playerInfos.x <= obstacleInfo.x + obstacleInfo.w) &&
+  (playerInfos.y + playerInfos.h >= obstacleInfo.y) &&
+  (playerInfos.y <= obstacleInfo.y + obstacleInfo.h) ){
+    is_colliding = true;
+    console.log("colliding");
+  }
+
+  //return side;
+  return is_colliding;
+}
+
+function horizontalMove(playerInfos, playerObject, value){
+  playerInfos.x += value;
+}
+function verticalMove(playerInfos, playerObject, value){
+  playerInfos.y += value;
+}
+
+function renderObject(objectInfos, object){
+  object.style.left = objectInfos.x;
+  object.style.top = objectInfos.y;
 }
