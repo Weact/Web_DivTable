@@ -2,6 +2,19 @@ function initAPI(){
   console.log('Weact Creation API loaded successfully');
 }
 
+function createElem(etype, ename, eid, eclass, estyle, einteraction, eaction, eparent, etextnode = ''){
+  var newElem = document.createElement(etype);
+  newElem.setAttribute('name',ename);
+  newElem.setAttribute('id',eid);
+  newElem.setAttribute('class',eclass);
+  newElem.setAttribute('style',estyle);
+  if(etextnode != ''){newElem.appendChild(document.createTextNode(etextnode));}
+  if(einteraction != ''){newElem.setAttribute(''+einteraction+'',eaction);}
+
+  eparent.appendChild(newElem);
+  return newElem;
+}
+
 //cname, cid, cclass, ctargetParent, style
 function createContainer(cname, cid, cclass, ctargetParent, style){
   var container = document.createElement('div');
@@ -178,7 +191,7 @@ function createDateToday(containerClass, containerId, displayerClass, displayerI
   displayer.setAttribute('class',displayerClass);
   displayer.setAttribute('id',displayerId);
 
-  var displayerText = document.createTextNode('DATE : ' + today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear());
+  var displayerText = document.createTextNode('DATE : ' + today.getDate() + '/' + (today.getMonth()+1) + '/' + today.getFullYear());
 
   displayer.appendChild(displayerText);
   dateContainer.appendChild(displayer);
